@@ -1,0 +1,29 @@
+{
+  "name": "ajsclass1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SazonovDmitriy/ajsClass1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SazonovDmitriy/ajsClass1/issues"
+  },
+  "homepage": "https://github.com/SazonovDmitriy/ajsClass1#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-jest": "^27.3.1",
+    "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "core-js": "^3.19.0"
+  }
+}
