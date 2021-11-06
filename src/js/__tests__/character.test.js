@@ -1,65 +1,38 @@
 import Character from "../character.js";
 
 test('Create Character', () => {
-    const character = 'character';
-    const type = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+    const name = 'name';
+    const type = 'Bowerman';
 
     const expected = {
-        name: character,
-        type: type,
+        name,
+        type,
         health: 100,
         level: 1,
     };
-    
-    
-    const recevied = new Character(character, type);
+       
+    const recevied = new Character(name, type);
 
     expect(recevied).toEqual(expected);
 });
 
-test('Error Character length', () => {
-    const character = '12345678910';
-    const type = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+test('Error Character big length', () => {
+    const name = '12345678910';
+    const type = 'Bowerman';
 
-    const expected = {
-        name: character,
-        type: type,
-        health: 100,
-        level: 1,
-    };
-
-    const recevied = new Character(character, type);
-
-    expect(recevied).toThrow(new Error('Неверная длинна имени'));
+    expect(() => new Character(name, type)).toThrow(new Error('Неверная длинна имени'));
 });
 
-test('Error Character length', () => {
-    const character = '1';
+test('Error Character small length', () => {
+    const name = '1';
+    const type = 'Bowerman';
 
-    const expected = {
-        name: character,
-        type: type,
-        health: 100,
-        level: 1,
-    };
-    
-    const recevied = new Character(character, type);
-
-    expect(recevied).toThrow(new Error('Неверная длинна имени'));
+    expect(() => new Character(name, type)).toThrow(new Error('Неверная длинна имени'));
 });
 
 test('Error Character type', () => {
-    const character = 'character';
+    const name = 'name';
     const type = 'Bow';
-
-    const expected = {
-        name: character,
-        type: type,
-        health: 100,
-        level: 1,
-    };
   
-    const recevied = new Character(character, type);
-
-    expect(recevied).toThrow(new Error('Неверно указан тип'));
+    expect(() => new Character(name, type)).toThrow(new Error('Неверно указан тип'));
 });
