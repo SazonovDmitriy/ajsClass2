@@ -36,3 +36,15 @@ test('Error Character type', () => {
   
     expect(() => new Character(name, type)).toThrow(new Error('Неверно указан тип'));
 });
+
+test('Error levelUp', () => {
+    const character = new Bowerman('name', 'Bowerman');
+    character.health = 0;
+    character.damage(65);
+    
+    const received = character.health;
+
+    const expected = 0;
+
+    expect(received).toBeCloseTo(expected);   
+});
