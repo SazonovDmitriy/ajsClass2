@@ -11,7 +11,7 @@ test('Create Character', () => {
         health: 100,
         level: 1,
     };
-       
+
     const recevied = new Character(name, type);
 
     expect(recevied).toEqual(expected);
@@ -34,20 +34,8 @@ test('Error Character small length', () => {
 test('Error Character type', () => {
     const name = 'name';
     const type = 'Bow';
-  
+
     expect(() => new Character(name, type)).toThrow(new Error('Неверно указан тип'));
-});
-
-test('Error health = 0', () => {
-    const character = new Bowerman('name', 'Bowerman');
-    character.health = 0;
-    character.damage(65);
-    
-    const received = character.health;
-
-    const expected = 0;
-
-    expect(received).toBeCloseTo(expected);   
 });
 
 test('levelUp', () => {
@@ -56,10 +44,21 @@ test('levelUp', () => {
     expect(character.level).toEqual(2);
 });
 
-// test('damage', () => {
-//     const character = new Bowerman('name', 'Bowerman');
-//     character.damage();
-//     character.health = 15;
+test('Error health = 0', () => {
+    const character = new Bowerman('name', 'Bowerman');
+    character.health = 0;
+    expect(() => character.levelUp()).toThrow();
+});
 
-//     expect(character.damage()).toEqual(character.health);
-// })
+test('Проверка damage при health > 0', () => {
+    const bowerman = new Bowerman('John', 'Bowerman');
+    bowerman.damage(10);
+    expect(92.5).toEqual(bowerman.health);
+});
+
+test('Проверка damage при health < 0', () => {
+    const bowerman = new Bowerman('John', 'Bowerman');
+    bowerman.health = -1;
+    expect(() => bowerman.damage(10)).toThrow();
+});
+

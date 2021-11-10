@@ -5,7 +5,7 @@ export default class Character {
         } else {
             this.name = character;
         };
-    const types = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+        const types = ['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
         if (!types.includes(type)) {
             throw new Error('Неверно указан тип');
         } else {
@@ -28,6 +28,8 @@ export default class Character {
     damage(points) {
         if (this.health > 0) {
             this.health -= points * (1 - this.defence / 100)
-        };
+        } else {
+            throw new Error('Персонаж скорее мерт, чем виж');
+        }
     };
 };
