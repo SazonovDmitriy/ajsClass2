@@ -41,25 +41,27 @@ test('Error Character type', () => {
 test('Error health = 0', () => {
     const character = new Bowerman('name', 'Bowerman');
     character.health = 0;
-    character.damage(65);
-    
-    const received = character.health;
 
-    const expected = 0;
-
-    expect(received).toBeCloseTo(expected);   
+    expect(() => character.levelUp()).toThrow();   
 });
 
 test('levelUp', () => {
     const character = new Bowerman('name', 'Bowerman');
     character.levelUp();
+
     expect(character.level).toEqual(2);
 });
 
-// test('damage', () => {
-//     const character = new Bowerman('name', 'Bowerman');
-//     character.damage();
-//     character.health = 15;
+test('damage to health > 0', () => {
+    const character = new Bowerman('name', 'Bowerman');
+    character.damage(10);
 
-//     expect(character.damage()).toEqual(character.health);
-// })
+    expect(92.5).toEqual(character.health)
+});
+
+test('damage to health < 0', () => {
+    const character = new Bowerman('name', 'Bowerman');
+    character.health = -1;
+
+    expect(() => character.damage(10)).toThrow();
+});
