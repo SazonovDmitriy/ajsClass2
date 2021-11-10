@@ -1,3 +1,4 @@
+import Bowerman from "../bowerman.js";
 import Character from "../character.js";
 
 test('Create Character', () => {
@@ -37,7 +38,7 @@ test('Error Character type', () => {
     expect(() => new Character(name, type)).toThrow(new Error('Неверно указан тип'));
 });
 
-test('Error levelUp', () => {
+test('Error health = 0', () => {
     const character = new Bowerman('name', 'Bowerman');
     character.health = 0;
     character.damage(65);
@@ -48,3 +49,17 @@ test('Error levelUp', () => {
 
     expect(received).toBeCloseTo(expected);   
 });
+
+test('levelUp', () => {
+    const character = new Bowerman('name', 'Bowerman');
+    character.levelUp();
+    expect(character.level).toEqual(2);
+});
+
+// test('damage', () => {
+//     const character = new Bowerman('name', 'Bowerman');
+//     character.damage();
+//     character.health = 15;
+
+//     expect(character.damage()).toEqual(character.health);
+// })
